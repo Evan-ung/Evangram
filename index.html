@@ -13,13 +13,16 @@
     </style>
 </head>
 <body>
-    
-    <div id="findDetails">
-        <h1>ProfileApp</h1>
-        <h3 id="findName" type="text"></h3>
-        <h3 id="findAge" type="number"></h3> <br><br>
-    </div>
-    
+    <center>
+        <div id="findDetails">
+            <h1>ProfileApp</h1>
+            <img id="ProfilePic1" src"" height = "400>
+            <h3 id="Name1" type="text"></h3>
+            <h3 id="Age1" type="number"></h3>
+            <h3 id="Bio1" type="number"></h3> <br><br>
+            
+        </div>
+    </center>
 
     <script type="module">
 
@@ -64,8 +67,10 @@
             get(child(dbref, "HHAmn2FfFbXY6y5bF0KTrp1JwyI3/"))
             .then((snapshot)=>{
                 if(snapshot.exists()){
-                    findName.innerHTML = "Name: " + snapshot.val().name;
-                    findAge.innerHTML = "Age: " + snapshot.val().age;
+                    ProfilePic1.src = snapshot.val().image;
+                    Name1.innerHTML = "Name: " + snapshot.val().name;
+                    Age1.innerHTML = "Age: " + snapshot.val().age;
+                    Bio1.innerHTML = "Age: " + snapshot.val().bio;
                 } else {
                     alert("No data found");
                 }
