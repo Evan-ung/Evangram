@@ -53,9 +53,9 @@
                     <iframe src="https://thunkable.site/w/Ref2fNvYWcOq1V22OYZrU" title="Evangram" height = 1000 width = 500></iframe>
                     <h1>Profile 1</h1>
                     <h2 id="profilePicture"></h2>
-                    <h2 id="name1" type ="text"></h2>
-                    <h2 id="age1" type="text"></h2>
-                    <h2 id="bio1" type="text"></h2>
+                    <h2 id="Name" type ="text"></h2>
+                    <h2 id="Age" type="text"></h2>
+                    <h2 id="Bio" type="text"></h2>
                     
                 </div>
             </body>
@@ -92,9 +92,9 @@
             get(child(dbref, "RUaEfRDY97VAQfgfl2NxnpIgyJF3/"))
             .then((snapshot)=>{
                 if(snapshot.exists()) {
-                    name1.innerHTML = "Name: " + snapshot.val().name;
-                    age1.innerHTML = "Age: " + snapshot.val().age;
-                    bio1.innerHTML = "Bio: " + snapshot.val().bio;                
+                    Name.innerHTML = "Name: " + snapshot.val().name;
+                    Age.innerHTML = "Age: " + snapshot.val().age;
+                    Bio.innerHTML = "Bio: " + snapshot.val().bio;                
                 }
                 else{
                     alert("No Data found");
