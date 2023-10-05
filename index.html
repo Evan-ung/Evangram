@@ -7,19 +7,37 @@
     <title>Document</title>
     <style>
         body {text-align: center;}
-        #enterDetails {float: left; width: 50%;  background-color: darkslategray; color: floralwhite;}
-        #findDetails {float: left; width: 50%; background-color: floralwhite; color: darkslategray;}
+        #enterDetails {
+            float: left; 
+            width: 50%;  
+            background-color: darkslategray; 
+            color: floralwhite;}
+        #findDetails {
+            float: left; 
+            width: 50%; 
+            background-color: floralwhite; 
+            color: darkslategray;}
         input {width: 120px;}
     </style>
 </head>
 <body>
     <center>
+        <div>
+            <img src="Banner.png">
+        </div>
         <div id="findDetails">
-            <h1>ProfileApp</h1>
+            <iframe src="https://thunkable.site/w/Ref2fNvYWcOq1V22OYZrU" title="Evangram" height = 1000 width = 500></iframe>
+            <h1>Profile 1</h1>
             <img id="ProfilePic1" src"" height = "400">
             <h3 id="Name1" type="text"></h3>
             <h3 id="Age1" type="number"></h3>
             <h3 id="Bio1" type="number"></h3> <br><br>
+
+            <h1>Profile 2</h1>
+            <img id="ProfilePic2" src"" height = "400">
+            <h3 id="Name2" type="text"></h3>
+            <h3 id="Age2" type="number"></h3>
+            <h3 id="Bio2" type="number"></h3> <br><br>
             
         </div>
     </center>
@@ -71,6 +89,23 @@
                     Name1.innerHTML = "Name: " + snapshot.val().name;
                     Age1.innerHTML = "Age: " + snapshot.val().age;
                     Bio1.innerHTML = "Age: " + snapshot.val().bio;
+                } else {
+                    alert("No data found");
+                }
+            })
+            .catch((error)=>{
+                alert(error)
+            })
+
+            const dbref = ref(db);
+
+            get(child(dbref, "IAz2rmrYHkaz9W1D4bfQ9k0VuSn1/"))
+            .then((snapshot)=>{
+                if(snapshot.exists()){
+                    ProfilePic2.src = snapshot.val().image;
+                    Name2.innerHTML = "Name: " + snapshot.val().name;
+                    Age2.innerHTML = "Age: " + snapshot.val().age;
+                    Bio2.innerHTML = "Age: " + snapshot.val().bio;
                 } else {
                     alert("No data found");
                 }
