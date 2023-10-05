@@ -33,9 +33,9 @@
             get(child(dbref, "RUaEfRDY97VAQfgfl2NxnpIgyJF3/")
             .then((snapshot)=>{
                 if(snapshot.exists()) {
-                    name1.innerHTML = "Name: " + snapshot.val.name;
-                    age1.innerHTML = "Age: " + snapshot.val.age;
-                    bio1.innerHTML = "Bio: " + snapshot.val.bio;                
+                    name1.innerHTML = "Name: " + snapshot.val().name;
+                    age1.innerHTML = "Age: " + snapshot.val().age;
+                    bio1.innerHTML = "Bio: " + snapshot.val().bio;                
                 }
                 else{
                     alert("No Data found");
