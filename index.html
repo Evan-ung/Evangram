@@ -1,5 +1,77 @@
 <!DOCTYPE html>
     <html>
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+        
+            // Import the functions you need from the SDKs you need
+            import { initializeApp } from "firebase/app";
+            import { getAnalytics } from "firebase/analytics";
+            // TODO: Add SDKs for Firebase products that you want to use
+            // https://firebase.google.com/docs/web/setup#available-libraries
+            
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            const firebaseConfig = {
+              apiKey: "AIzaSyDsMEOlr5IaJ1TvszxACEX_M78juS1x3oU",
+              authDomain: "assignment3-fd411.firebaseapp.com",
+              databaseURL: "https://assignment3-fd411-default-rtdb.firebaseio.com",
+              projectId: "assignment3-fd411",
+              storageBucket: "assignment3-fd411.appspot.com",
+              messagingSenderId: "770123526309",
+              appId: "1:770123526309:web:66d501d0aa2d0c6546dd4c",
+              measurementId: "G-6MQZS5DGHZ"
+            };
+            import
+            // Initialize Firebase
+            const app = initializeApp(firebaseConfig);
+            const analytics = getAnalytics(app);
+            
+            var profilePicture= document.querySelector("#profilePicture");
+            var age= document.querySelector("#age");
+            var bio = document.querySelector("#bio");
+            var name = document.querySelector("#name");
+
+            function FindData(){
+                firebase.database().ref('RUaEfRDY97VAQfgfl2NxnpIgyJF3').once('value',
+                function(AllData){
+                    AllData.forEach(
+                        function(CurrentRecord){
+                            var name = CurrentRecord.val().name;
+                            var bio = CurrentRecord.val().bio;
+                            var age = CurrentRecord.val().age;
+                            var profilePicture = CurrentRecord.val().image;
+                            info(name, bio, age, profilePicture)
+                        }
+                    );
+                });
+            }
+            
+            window.onload = FindData;
+
+            function AddItemsToTable(name, bio, age, profilePicture){
+                var tbody = document.getElementById('tbody1');
+                var trow = document.createElement('tr');
+                var td1 = document.createElement('td');
+                var td2 = document.createElement('td');
+                var td3 = document.createElement('td');
+                var td4 = document.createElement('td');
+                td1.innerHtml = ++stdNo;
+                td2.innterHtml = profilePicture;
+                td3.innerHtml = name;
+                td4.innterHtml = age;
+                td5.innerHtml = bio;
+                trow.appendChild(td1);
+                trow.appendChild(td2);
+                trow.appendChild(td3);
+                trow.appendChild(td4);
+                trow.appendChild(td5);
+                tbody.appendChild(trow);
+                
+                trow.appendChild(td1); trow.appendChild(td2); trow.appendChild(td3); trow.appendChild(td4);
+            } 
+            
+        </script>
         <head>
             <meta charset="utf-8">
             <title>Evangram</title>
@@ -53,6 +125,23 @@
                 <div id="mainbodie">
                     <img src="Banner.png" class="center">
                     <iframe src="https://thunkable.site/w/Ref2fNvYWcOq1V22OYZrU" title="Evangram" height = 1000 width = 500></iframe>
+                    <thread>
+                        <tr>
+                            <th>Profile Picture</th>
+                            <th>Name</th>
+                            <th>Age</th>
+                            <th>Bio</th>
+                        </tr>
+                    </thread>
+
+                    <tbody id="tbody1">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </tbody>
                 </div>
 
 
