@@ -16,8 +16,8 @@
     <center>
         <div id="findDetails">
             <h1>ProfileApp</h1>
-            <img id="ProfilePic1" src"" height = "400>
-            <h3 id="Name" type="text"></h3>
+            <img id="ProfilePic1" src"" height = "400">
+            <h3 id="Name1" type="text"></h3>
             <h3 id="Age1" type="number"></h3>
             <h3 id="Bio1" type="number"></h3> <br><br>
             
@@ -68,7 +68,7 @@
             .then((snapshot)=>{
                 if(snapshot.exists()){
                     ProfilePic1.src = snapshot.val().image;
-                    Name.innerHTML = "Name: " + snapshot.val().name;
+                    Name1.innerHTML = "Name: " + snapshot.val().name;
                     Age1.innerHTML = "Age: " + snapshot.val().age;
                     Bio1.innerHTML = "Age: " + snapshot.val().bio;
                 } else {
