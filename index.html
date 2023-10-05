@@ -24,13 +24,11 @@
             const app = initializeApp(firebaseConfig);
             import {getDatabase, set, get, update, remove, ref, child}
             from "https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"
-            var name1 = document.querySelector("#name1");
-            var age1 = document.querySelector("#age1");
-            var bio1 = document.querySelector("#bio1");
             
+            const db = getDataBase();
             const dbref = ref(db);
 
-            get(child(dbref, "RUaEfRDY97VAQfgfl2NxnpIgyJF3/")
+            get(child(dbref, "RUaEfRDY97VAQfgfl2NxnpIgyJF3/"))
             .then((snapshot)=>{
                 if(snapshot.exists()) {
                     name1.innerHTML = "Name: " + snapshot.val().name;
