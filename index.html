@@ -28,14 +28,22 @@
             var age1 = document.querySelector("#age1");
             var bio1 = document.querySelector("#bio1");
             
-                const dbref = ref(dbref);
+            const dbref = ref(db);
 
-                get(child(dbref, "RUaEfRDY97VAQfgfl2NxnpIgyJF3/")
-        
-                name1.innterHTML = Name;
-                age1.innterHTML = Age;
-                bio1.innterHTML = Bio;
-            }
+            get(child(dbref, "RUaEfRDY97VAQfgfl2NxnpIgyJF3/")
+            .then((snapshot)=>{
+                if(snapshot.exists()) {
+                    name1.innerHTML = "Name: " + snapshot.val.name;
+                    age1.innerHTML = "Age: " + snapshot.val.age;
+                    bio1.innerHTML = "Bio: " + snapshot.val.bio;                
+                }
+                else{
+                    alert("No Data found");
+                }
+            })
+            .catch((error)=>{
+                alert(error)
+            })
         </script>
         
         <head>
