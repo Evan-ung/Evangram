@@ -61,11 +61,11 @@
 
             const dbref = ref(db);
 
-            get(child(dbref, "https://assignment3-fd411-default-rtdb.firebaseio.com/RUaEfRDY97VAQfgfl2NxnpIgyJF3/"))
+            get(child(dbref, "RUaEfRDY97VAQfgfl2NxnpIgyJF3/"))
             .then((snapshot)=>{
                 if(snapshot.exists()){
-                    findName.innerHTML = "Name: " + snapshot.val().name;
-                    findAge.innerHTML = "Age: " + snapshot.val().age;
+                    findName.innerHTML = "Name: " + snapshot.val().Name;
+                    findAge.innerHTML = "Age: " + snapshot.val().Age;
                 } else {
                     alert("No data found");
                 }
