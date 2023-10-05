@@ -1,88 +1,80 @@
 <!DOCTYPE html>
-    <html>
-        <head>
-            <meta charset="utf-8">
-            <title>Evangram</title>
-                <link rel="stylesheet" href="style.css">
-                <style>
-                    #mainbodie {
-                        width: 1150px;
-                        margin: auto;
-                        border: 1px solid;
-                        border-top: 5px solid;
-                        border-bottom: 5px solid;
-                        background-color: #00000095; 
-                        padding: 20px;
-                       }       
-                   #headbuttons {
-                        width: 50%px;
-                        margin: auto;
-                        border: 1px solid;
-                        border-top: 2px solid;
-                        background-color: #00000095;
-                   }
-                   #topBar{
-                        width: 100%px;
-                        margin: auto;
-                        border: 1px solid;
-                        border-top: 5px solid;
-                        border-bottom: 5px solid;
-                        background-color: #00000095; 
-                        padding: 20px;
-                   }
-               </style>
-        </head>
-        <center>
-            <div>
-                <h1>Profile App</h1>
-                <h2 id="Name" type="text"></h2>
-                <h2 id="Age type="text"></h2>
-                <h2 id="Bio type="text"></h2>
-            </div>
-        </center>
-        <script type="module">
-            // Import the functions you need from the SDKs you need
-            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
-            import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
-            // TODO: Add SDKs for Firebase products that you want to use
-            // https://firebase.google.com/docs/web/setup#available-libraries
-            
-            // Your web app's Firebase configuration
-            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-            const firebaseConfig = {
-            apiKey: "AIzaSyDsMEOlr5IaJ1TvszxACEX_M78juS1x3oU",
-            authDomain: "assignment3-fd411.firebaseapp.com",
-            databaseURL: "https://assignment3-fd411-default-rtdb.firebaseio.com",
-            projectId: "assignment3-fd411",
-            storageBucket: "assignment3-fd411.appspot.com",
-            messagingSenderId: "770123526309",
-            appId: "1:770123526309:web:66d501d0aa2d0c6546dd4c",
-            measurementId: "G-6MQZS5DGHZ"
-            };
-            
-            // Initialize Firebase
-            const app = initializeApp(firebaseConfig);
-            const analytics = getAnalytics(app);
-            import{getDatabase, set, get, update, remove, ref, child }
-            from "https://www.gstatic.com/firebasejs/10.4.0/firebase-database.js"
-            const db = getDatabase();
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {text-align: center;}
+        #enterDetails {float: left; width: 50%;  background-color: darkslategray; color: floralwhite;}
+        #findDetails {float: left; width: 50%; background-color: floralwhite; color: darkslategray;}
+        input {width: 120px;}
+    </style>
+</head>
+<body>
+    
+    <div id="findDetails">
+        <h1>ProfileApp</h1>
+        <h3 id="findName" type="text"></h3>
+        <h3 id="findAge" type="number"></h3> <br><br>
+    </div>
+    
 
-            const dbref(db);
-            get(child(dbref, "RUaEfRDY97VAQfgfl2NxnpIgyJF3/"))
+    <script type="module">
+
+        //THIS IS WHERE YOU PASTE THE CODE TO CONNECT TO YOUR OWN DATABASE
+        //Copy and paste the CDN bit of code from your app that you created on Firebase.
+        //The script tag above is already there, so careful not to have duplicate script tags.
+        //After you've copied and pasted, just delete the unnecessary script tags. 
+       // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.4.0/firebase-analytics.js";
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+        
+        // Your web app's Firebase configuration
+        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+        const firebaseConfig = {
+        apiKey: "AIzaSyDsMEOlr5IaJ1TvszxACEX_M78juS1x3oU",
+        authDomain: "assignment3-fd411.firebaseapp.com",
+        databaseURL: "https://assignment3-fd411-default-rtdb.firebaseio.com",
+        projectId: "assignment3-fd411",
+        storageBucket: "assignment3-fd411.appspot.com",
+        messagingSenderId: "770123526309",
+        appId: "1:770123526309:web:66d501d0aa2d0c6546dd4c",
+        measurementId: "G-6MQZS5DGHZ"
+        };
+        
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+
+        import {getDatabase, ref, get, set, child, update, remove}
+        from //Copy and Paste the URL from near the top of the CDN you pasted in from firebase
+        // (the one where you imported "initializeApp" from),
+        //but change "firebase-app" to "firebase-database"
+        
+
+        const db = getDatabase();
+
+
+            const dbref = ref(db);
+
+            get(child(dbref, "People/" + findID.value))
             .then((snapshot)=>{
                 if(snapshot.exists()){
-                    Name.innerHTML = "Name " + snapshot.val().name;
-                    Age.innerHTML = "Name " + snapshot.val().age;
-                    Bio.innerHTML = "Name " + snapshot.val().bio;
-                }
-                else{
-                    alert("No Data Found");
+                    findName.innerHTML = "Name: " + snapshot.val().name;
+                    findAge.innerHTML = "Age: " + snapshot.val().age;
+                } else {
+                    alert("No data found");
                 }
             })
             .catch((error)=>{
-                alert(error);
+                alert(error)
             })
-        </script>
-        
+            
+      </script>
+</body>
+</html>
 
-    </html>
